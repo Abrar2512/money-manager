@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap By SKILLHUB</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<style>
+   body{
+    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRJOU0kvoUpsNJV2VjNFHhq9W6NxBxWxr4vw&usqp=CAU");
+    background-repeat: no-repeat;
+    background-size: cover;
+   }
+</style>
+
+<body class="bg-dark">
+    <div id="feedback"></div>
+    <div id="signupCard" class="container d-none mt-5">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+                <div class="card">
+                    <div class="card-header">Signup</div>
+                    <div class="card-body">
+                        <div>
+                            <label for="name" class="form-label">First name</label>
+                            <input type="text" class="form-control" id="fname" placeholder="Enter your name" />
+                            <div class="valid-feedback">Looks good!</div>
+                            <div class="invalid-feedback">Please choose a username.</div>
+                        </div>
+                        <div class="mt-2">
+                            <label for="email" class="form-label">First Email</label>
+                            <input type="text" class="form-control" id="semail" placeholder="Enter Your Email" />
+                            <div class="valid-feedback">Looks good!</div>
+                            <div class="invalid-feedback">Please choose a username.</div>
+                        </div>
+                        <div class="mt-2">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="text" class="form-control" id="spassword" placeholder="Enter Your Password" />
+                            <div class="valid-feedback">Looks good!</div>
+                            <div class="invalid-feedback">Please choose a password.</div>
+                        </div>
+                        <div class="mt-2">
+                            <label for="cpassword" class="form-label">Confirm Password</label>
+                            <input type="text" class="form-control" id="scpassword"
+                                placeholder="Confirm Your Password" />
+                            <div class="valid-feedback">Looks good!</div>
+                            <div class="invalid-feedback">
+                                Please Recheck Your Password.
+                            </div>
+                        </div>
+                        <button id="singup" type="button" class="btn btn-primary w-100 mt-3">
+                            Signup
+                        </button>
+                        <p class="text-center mt-3">
+                            Already Have Account? <a onclick="loadLoginCard()" href="#">Login</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="loginCard" class="container mt-4 ">
+        <div class="row">
+            <div class="col-sm-6 offset-sm-3">
+                <div class="card">
+                    <div class="card-header">Login</div>
+                    <div class="card-body">
+                        <div>
+                            <label for="email" class="form-label">First Email</label>
+                            <input type="text" class="form-control" id="email" placeholder="Enter Your Email" />
+                            <div class="valid-feedback">Looks good!</div>
+                            <div class="invalid-feedback">Please choose a username.</div>
+                        </div>
+                        <div class="mt-2">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" id="password"
+                                placeholder="Enter Your Password" />
+                            <div class="valid-feedback">Looks good!</div>
+                            <div class="invalid-feedback">Please choose a username.</div>
+                        </div>
+                        <button id="login" type="button" class="btn btn-primary w-100 mt-3">
+                            Login
+                        </button>
+                        <p class="text-center mt-3">
+                            Dont Have Account? <a href="#" onclick="loadSignupCard()">Create Account</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="accountCard" class="container mt-5 d-none">
+      
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-header bg-success text-light">Income</div>
+                    <div class="card-body">
+                        <input placeholder="Salary" id="incomeFrom" type="text" class="form-control">
+                        <br>
+                        <input placeholder="25000" id="incomeAmount" type="numbre" class="form-control">
+                        <br>
+                        <button id="incomeBtn" type="button" class="btn btn-success btn-lg w-100">Add Income</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-header bg-danger text-light">Expense</div>
+                    <div class="card-body">
+                        <input placeholder="Petro" id="expenseFor" type="text" class="form-control">
+                        <br>
+                        <input placeholder="500" id="expenseAmount" type="numbre" class="form-control">
+                        <br>
+                        <button id="expenseBtn" type="button" class="btn btn-danger btn-lg w-100">Add Expense</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card">
+                    <div class="card-header bg-warning">
+                        <h1 class="d-flex justify-content-between">Balance <strong id="balance"></strong></h1>
+                    </div>
+                    <div class="card-body" id="log"></div>
+                </div>
+                <button type="button" class="btn btn-primary mt-4" id="logout">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="059 Error.js"></script>
+    <script>
+        /*
+            
+        income 
+            from        salary
+            amount      25000
+        expense
+            for         petrol
+            amont       500
+        balance 
+
+
+        step 1 create UI for the app
+        step 2 get value from income input and add to income
+        step 3 dispaly income log
+        step 4 get value from expense input and add to expense
+        step 5 dispaly expense log
+        step 6 display balance
+        step 7 use local storage to store data 
+
+        */
+
+        let isLogin = localStorage.getItem("loggedIn")
+            ? JSON.parse(localStorage.getItem("loggedIn"))
+            : false
+        if (isLogin) {
+            loginCard.classList.add("d-none")
+            accountCard.classList.remove("d-none")
+        }
+        // loginCard handle start
+        function loadLoginCard() {
+            loginCard.classList.remove("d-none")
+            signupCard.classList.add("d-none")
+        }
+        function loadSignupCard() {
+            loginCard.classList.add("d-none")
+            signupCard.classList.remove("d-none")
+        }
+        // loginCard handle end
+
+        // handle Signup start
+        let usersArray = []
+        singup.addEventListener("click", function () {
+            if (
+                validateRequired(fname) &&
+                validateRequired(semail) &&
+                validateRequired(spassword) &&
+                validateRequired(scpassword)
+            ) {
+                if (spassword.value === scpassword.value) {
+                    console.log("Singup Success")
+                    let user = {
+                        name: fname.value,
+                        email: semail.value,
+                        password: spassword.value,
+                    }
+                    usersArray.push(user)
+                    localStorage.setItem("users", JSON.stringify(usersArray))
+                    handleFeedback("success", "User Register Successfully", 2)
+                } else {
+                    spassword.classList.remove("is-valid")
+                    spassword.classList.add("is-invalid")
+
+                    scpassword.classList.remove("is-valid")
+                    scpassword.classList.add("is-invalid")
+
+                    handleFeedback("danger", "Password Do Not Match", 2)
+                }
+            }
+
+        })
+        // handle Signup end
+
+        // handle login start
+        login.addEventListener("click", function () {
+            if (validateRequired(email) && validateRequired(password)) {
+                let allUsers = JSON.parse(localStorage.getItem("users"))
+                let found = allUsers.find(function (item) {
+                    return item.email === email.value && item.password === password.value
+                })
+
+                if (found) {
+                    balance.innerHTML = found.name
+                    console.log(found);
+                    localStorage.setItem("loggedIn", JSON.stringify(found))
+                    handleFeedback("success", "you have logged in Successfully", 2)
+                    loginCard.classList.add("d-none")
+                    accountCard.classList.remove("d-none")
+
+
+
+                } else {
+                    handleFeedback("danger", "Email Or Password Wrong", 5)
+
+                }
+
+
+            }
+        })
+
+        // handle login end
+        logout.addEventListener("click", function () {
+            localStorage.removeItem("loggedIn")
+            accountCard.classList.add("d-none")
+            loginCard.classList.remove("d-none")
+        })
+        let account = []
+
+        function handleAccount(event) {
+
+            let inp1, inp2
+            switch (event.target.id) {
+                case "expenseBtn": inp1 = expenseFor; inp2 = expenseAmount; break;
+                case "incomeBtn": inp1 = incomeFrom; inp2 = incomeAmount; break;
+                default: console.log("????");
+            }
+            if (inp1.value == "") {
+                inp1.classList.add("is-invalid")
+            }
+            if (inp2.value == "") {
+                inp2.classList.add("is-invalid")
+            }
+            if (inp1.value != "" && inp2.value != "") {
+                account.push({
+                    type: event.target.id == "incomeBtn" ? "income" : "expense",
+                    from: inp1.value,
+                    amount: inp2.value
+                })
+                display(event.target.id == "incomeBtn" ? "success" : "danger")
+            }
+        }
+
+        incomeBtn.addEventListener("click", handleAccount)
+        expenseBtn.addEventListener("click", handleAccount)
+
+        function display(arg) {
+            let message = `${arg == "success" ? "Income" : "Expense"} Added Successfully`
+            handleFeedback(arg,message )
+            
+            let str = `<ul class="list-group">`
+            // for (let i = 0; i < account.length; i++) {
+            //     str += `<li class="list-group-item list-group-item-${account[i].type == "income" ? "success" : "danger"
+            //         } d-flex justify-content-between">
+            //         ${account[i].from} <strong>${account[i].amount}</strong>
+            //     </li > `
+            // }
+            account.forEach(function (item) {
+                str += `<li class="list-group-item list-group-item-${item.type == "income" ? "success" : "danger"
+                    } d-flex justify-content-between">
+                    ${item.from} <strong>${item.amount}</strong>
+                </li > `
+            })
+            str += `</ul>`
+            log.innerHTML = str
+
+            balance.innerHTML = getTotal("income") - getTotal("expense")
+        }
+        function getTotal(arg) {
+            return account.reduce(function (total, item) {
+                if (arg) {
+                    total += item.type == arg ? +item.amount : 0
+                } else {
+                    total += +item.amount
+                }
+                return total
+            }, 0)
+        }
+        // handleFeedback start
+        function handleFeedback(type, message, time = 2) {
+            feedback.innerHTML = `<div class="alert alert-${type}">${message}</div>`
+            setTimeout(function () {
+                feedback.innerHTML = ""
+            }, time * 1000)
+        }
+        // handleFeedback end
+    </script>
+</body>
+
+</html>
